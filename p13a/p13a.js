@@ -8,7 +8,7 @@ function es_primo(peticiones){
 		primos.append(1);
 		var num = 3;
 		while (length(primos)<peticiones){
-			x=1;
+			 var x=1;
 			for (var i = 2; i <num; i++) {
 				x=x*(num%i);
 			}
