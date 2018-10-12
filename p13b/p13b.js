@@ -1,6 +1,6 @@
 function palindromo (palabra){
-	palabra = palabra.split();
-	reves = palabra.reverse();
+	 var palabra = palabra.split();
+	 var reves = palabra.reverse();
 	if (palabra == reves){
 		print("Son palindromos");
 	}else{
