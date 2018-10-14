@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Creacion de formularios</title>
+	<style type="text/css">
+		ul{
+			font-size: 20px;
+		}
+		input{
+			margin: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+		function insert_label(nombre) {
+			var form=document.getElementById("formulario");
+			var label = document.createElement('label');
+			label.setAttribute('for',nombre);
+			label.textContent = nombre;
+			form.appendChild(label);
+		}
+		function field(){
+			var selector = document.getElementById("typeselector");
+			var type = selector.value;
+			var nombre = prompt("Diga el nombre de la etiqueta");
+			var form = document.getElementById("formulario");
+
+			if (nombre == null){
+				return false;
+			} else{
+				switch(type){
+					case "text":
+					case "number":
+					case "email":
+						var input = document.createElement('input');
+						insert_label(nombre)
+						input.setAttribute('type',type);
+						input.setAttribute('id',nombre);
+						form.appendChild(input);
+						form.appendChild(document.createElement('br'));
+						break;
+					case "select":
+						insert_label(nombre)
+						var select = document.createElement('select');
+						select.setAttribute("id","nombre");
+						form.appendChild(select);
+						var option = prompt("Especifique los valores para el selector separados por comas");
+						var options = option.split(",");
+						options.forEach(function(entry) {
+						    var optiontag = document.createElement("option");
+						    optiontag.setAttribute("value",entry);
+						    optiontag.textContent = entry;
+						    select.appendChild(optiontag);
+						});
+						form.appendChild(document.createElement('br'));
+						break;
+					case "radioe":
+						var option = prompt("Especifique los valores separados por comas");
+						var options = option.split(",");
+						var fieldset = document.createElement("fieldset");
+						var title = document.createElement("legend");
+						title.textContent = nombre;
+						fieldset.appendChild(title);
+						form.appendChild(fieldset);
+						options.forEach(function(entry){
+							var div = document.createElement("div");
+							fieldset.appendChild(div);
+							var radio = document.createElement("input");
+							radio.setAttribute("type","radio");
+							radio.setAttribute("value",entry);
+							div.appendChild(radio);
+							var label = document.createElement("label");
+							label.setAttribute("for",entry);
+							label.textContent = entry;
+							div.appendChild(label);
+						});
+						break;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<h2>Aqui podra crear su formulario de manera rapida y sencilla</h2>
+	<h3>Escoja las opciones que crea necesarias para crear su formulario</h3>
+	<form id="selector" action="none">
+		<select id="typeselector">
+			<option value="text">Campo de texto</option>
+			<option value="number">Campo de numero</option>
+			<option value="email">Campo para introducir email</option>
+			<option value="select">Lista de selección</option>
+			<option value="radioi">Campo para incluir unas opciones no exclusivas de selección</option>
+			<option value="radioe">Campo para incluir opciones exclusivas de selección.</option>
+			<option value="submit">Boton</option>
+		</select>
+		<button type="button" onclick="field()">Crear</button>
+	</form>
+	<form id="formulario">
+	</form>
+
+</body>
+</html>
