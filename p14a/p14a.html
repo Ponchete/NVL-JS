@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+             <script type="text/javascript">
+                function crear_img(url){
+                    var img = document.createElement("img");
+                    img.setAttribute('src',url);
+                    img.setAttribute('width','25px');
+                    img.setAttribute('height','25px');
+                    return(img)
+                }
+                function load() {
+                    var pelis = '[{"name" : "El señor de los anillos","genre": "Accion"},{"name": "Regreso al Futuro","genre": "Accion"},{"name": "Los increibles","genre": "Animacion"},{"name": "La Momia","genre": "Accion"},{"name": "El Silencio de los corderos","genre": "Terror"},{"name": "Venom","genre": "Accion"},{"name": "Los Guardianes de la Galaxya","genre": "Accion"},{"name": "Harry Potter y la piedra filosofal","genre": "Aventuras"},{"name": "Los Vengadores: Infitity War","genre": "Accion"},{"name": "Toy Story","genre": "Animacion"},{"name": "Gru, mi villano favorito","genre": "Animacion"},{"name": "Aladdin","genre": "Animacion"},{"name": "Los mercenarios","genre": "Accion"},{"name": "IT","genre": "Terror"},{"name": "La la Land","genre": "Comedia"},{"name": "Figuras Ocultas","genre": "Drama"},{"name": "Criadas y señoras","genre": "Drama"},{"name": "La forma del agua","genre": "Drama"},{"name": "Matrix","genre": "Accion"},{"name": "El padrino","genre": "Drama"},{"name": "El caballero oscuro","genre": "Accion"},{"name": "Pulp Fiction","genre": "Drama"},{"name": "Forrest Gump","genre": "Drama"},{"name": "La guerra de las galaxias","genre": "Aventura"},{"name": "Interestellar","genre": "Aventura"},{"name": "Infiltrados","genre": "Drama"},{"name": "Gladiator","genre": "Accion"}]'
+                     var mydata =JSON.parse(pelis);
+
+                     var ul = document.getElementById('data');
+
+                     for(var i = 0;i < mydata.length; i++)
+                     {
+
+                        ul.innerHTML = ul.innerHTML+ "<li class=\"name\">"+ mydata[i].name +"</li>"+ "<li class=\"emoji\">"+ mydata[i].genre +"</li>"+"<br>";
+                     }
+                     
+                     var li =document.getElementsByClassName('emoji');
+                     for (var i=0;i<li.length;i++){
+                        if (li[i].innerText == 'Accion'){
+                            var img = crear_img('https://www.significadoemojis.es/img/whatsapp/pistola-whatsapp-1F52B.png')
+                            li[i].appendChild(img)
+                        } else if (li[i].innerText == 'Animacion'){
+                            var img = crear_img('https://www.significadoemojis.es/img/whatsapp/cara-payaso-whatsapp-1F921.png')
+                            li[i].appendChild(img) 
+                     } else if (li[i].innerText == 'Terror'){
+                            var img = crear_img('https://www.significadoemojis.es/img/whatsapp/emoji-ogro-whatsapp-1F479.png')
+                            li[i].appendChild(img) 
+                     } else if (li[i].innerText == 'Aventura'){
+                            var img = crear_img('https://www.significadoemojis.es/img/whatsapp/emoticono-sobrero-vaquero-whatsapp-1F920.png')
+                            li[i].appendChild(img) 
+                     } else if (li[i].innerText == 'Drama'){
+                            var img = crear_img('https://www.significadoemojis.es/img/whatsapp/emoticono-llorando-mucho-1F62D.png')
+                            li[i].appendChild(img) 
+                     } else if (li[i].innerText == 'Comedia'){
+                            var img = crear_img('https://www.significadoemojis.es/img/whatsapp/emoji-lagrimas-alegria-whatsapp-1F602.png')
+                            li[i].appendChild(img) 
+                     }
+                      
+                    }
+                 }
+        </script>
+    </head>
+    <h4>Listado de Peliculas</h4>
+    <body onload="load()">
+    <ul id= "data">
+
+    </ul>
+
+    </body>
+</html>
